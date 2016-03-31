@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Author: Remy Themsen
+# Created: 31/03/2016
+#
+# This script requires scrot, i3(with i3lock) and imagemagick with convert.
+# When the script is called a screenshot of the current screen(s)
+# is taken, and pixelated, then i3lock locks the screen using 
+# the newly generated pictures as a background. 
+# 
+# The wanted effect is that the screen looks 'pixelated' when locked
+
+# Take screenshot, save to tmp
+/usr/bin/scrot -z '/tmp/screenshot.png'
+# Blur the image
+/usr/bin/convert -scale 20% -scale 500% /tmp/screenshot.png /tmp/screenshotpixelated.png
+# Lock the screen
+/usr/bin/i3lock -i /tmp/screenshotpixelated.png
+
+
+
